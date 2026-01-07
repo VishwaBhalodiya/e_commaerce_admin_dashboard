@@ -21,6 +21,16 @@ export async function DELETE(
       )
     }
 
+    // Check if productId exists
+    if (!sale.productId) {
+      // If no productId, just delete the sale without restoring stock
+      await prisma.sale.delete({
+        where: { id },
+      })
+
+      return NextResponse.json({ message: "Sale deleted successfully" })
+    }
+
     // Delete sale and restore stock in a transaction
     await prisma.$transaction([
       // Delete sale
