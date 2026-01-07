@@ -42,7 +42,7 @@ export async function sendWelcomeEmail({
   invitedBy,
 }: SendWelcomeEmailProps): Promise<EmailResult> {
   
-  const appUrl = process.env.NEXTAUTH_URL || 'http://localhost:3000'
+  const appUrl = process.env.NEXTAUTH_URL || "https://e-commaerce-admin-dashboard.vercel.app/login"
   const fromEmail = process.env.GMAIL_USER
 
   try {
